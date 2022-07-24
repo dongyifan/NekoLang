@@ -12,7 +12,7 @@ namespace NekoLang {
 
 namespace {
 const std::map<std::string_view, std::string_view> KeyWords = {
-    {"func", FUNCTION},
+    {"fn", FUNCTION},
     {"let", LET},
     {"true", TRUE_KEY},
     {"false", FALSE_KEY},
