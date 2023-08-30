@@ -19,15 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\NekoLang\lexer.cpp" />
     <ClCompile Include="..\NekoLang\main.cpp" />
-    <ClCompile Include="..\NekoLang\repl.cpp" />
-    <ClCompile Include="..\NekoLang\token.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\NekoLang\lexer.hpp" />
-    <ClInclude Include="..\NekoLang\repl.hpp" />
-    <ClInclude Include="..\NekoLang\token.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
