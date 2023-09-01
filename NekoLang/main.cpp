@@ -4,18 +4,22 @@
 //
 //  Created by YIFAN DONG on 2022/6/25.
 //
-
+#include "lexer.hpp";
+#include "repl.hpp";
 #include <iostream>
 #include <type_traits>
-#include "lexer.hpp"
 
-using namespace nekolan;
+#include <vector>
+
+using namespace nekolang;
 //#include "token.hpp"
 //#include "lexer.hpp"
 //#include "repl.hpp"
 //
 //using namespace NekoLang;
-void TestLexerSimple() {
+
+void Test_Lexer_Simple() 
+{
     Lexer lexer("=+(){},");
     Token token;
     do {
@@ -23,35 +27,55 @@ void TestLexerSimple() {
         std::cout << token.type << ": " << token.literal << "\n";
     } while (token.type != EOF_);
 }
+
+void Test_Next_Token()
+{
+    static constexpr const char* code = R"(
+let five = 5;
+let ten = 10;
+
+let add = fn(x, y) {
+    x + y;
+};
+
+let result = add(five, ten);
+)";
+    Lexer lexer(code);
+    Token token;
+    do {
+        token = lexer.next_token();
+        std::cout << token.type << ": " << token.literal << "\n";
+    } while (token.type != EOF_);
+}
 //
-//void TestLexerWithIdentAndKeyword() {
-//    static constexpr const char* code =R"(let five = 5;
-//let ten = 10;
-//
-//let add = func(x, y) {
-//    x + y;
-//};
-//
-//let result = add(five, ten);
-//!-/*5;
-//5 < 10 > 5;
-//
-//if (5 < 10) {
-//    return true;
-//} else {
-//    return false;
-//}
-//
-//10 == 10;
-//10 != 9;
-//)";
-//    Lexer lexer(code);
-//    Token token;
-//    do {
-//        token = lexer.NextToken();
-//        std::cout << token << "\n";
-//    } while (token.type.compare(THEEOF) != 0);
-//}
+void Test_Lexer_With_Ident_And_Keyword() {
+    static constexpr const char* code =R"(let five = 5;
+let ten = 10;
+
+let add = fn(x, y) {
+    x + y;
+};
+
+let result = add(five, ten);
+!-/*5;
+5 < 10 > 5;
+
+if (5 < 10) {
+    return true;
+} else {
+    return false;
+}
+
+10 == 10;
+10 != 9;
+)";
+    Lexer lexer(code);
+    Token token;
+    do {
+        token = lexer.next_token();
+        std::cout << token << "\n";
+    } while (token.type != EOF_);
+}
 
 int main(int argc, const char * argv[]) {
 //    TestLexerWithIdentAndKeyword();
@@ -69,8 +93,10 @@ int main(int argc, const char * argv[]) {
     //    std::cout << token.type << ": " << token.literal << '\n';
     //}
 
-    TestLexerSimple();
+    //Test_Next_Token();
+    //Test_Lexer_With_Ident_And_Keyword();
 
+    repl_start(std::cin, std::cout);
 
     std::cout << "Hello World!";
     
