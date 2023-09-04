@@ -4,12 +4,16 @@
 //
 //  Created by YIFAN DONG on 2022/6/25.
 //
-#include "lexer.hpp";
-#include "repl.hpp";
+
+#ifdef __cpp_modules
+import std;
+import "lexer.hpp";
+import "repl.hpp";
+#else
 #include <iostream>
 #include <type_traits>
-
 #include <vector>
+#endif;
 
 using namespace nekolang;
 //#include "token.hpp"

@@ -1,9 +1,16 @@
 #ifndef neko_lang_lexer_hpp_
 #define neko_lang_lexer_hpp_
+
+#ifdef __cpp_modules
+import std;
+#else
 #include <string>
 #include <string_view>
 #include <stdexcept>
 #include <map>
+#endif // __cpp_modules
+
+
 
 namespace nekolang {
 
@@ -35,12 +42,12 @@ inline constexpr std::string_view IF = "IF";
 inline constexpr std::string_view ELSE = "ELSE";
 inline constexpr std::string_view RETURN = "RETURN";
 
-bool is_letter(char ch)
+inline bool is_letter(char ch)
 {
     return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z') || ch == '_';
 }
 
-bool is_digit(char ch)
+inline bool is_digit(char ch)
 {
     return '0' <= ch && ch <= '0';
 }
@@ -53,7 +60,7 @@ struct Token
     std::string_view literal;
 };
 
-auto& operator<< (auto& o, const Token& t)
+inline auto& operator<< (auto& o, const Token& t)
 {
     o << t.type << ": " << t.literal;
     return o;

@@ -1,7 +1,12 @@
 #ifndef neko_lang_repl_hpp
 #define neko_lang_repl_hpp
 
+#ifdef __cpp_modules
+import std;
+#else
 #include <iostream>
+#endif // __cpp_modules
+
 #include "lexer.hpp"
 
 namespace nekolang {

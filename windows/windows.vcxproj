@@ -22,8 +22,12 @@
     <ClCompile Include="..\NekoLang\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\NekoLang\lexer.hpp" />
-    <ClInclude Include="..\NekoLang\repl.hpp" />
+    <ClCompile Include="..\NekoLang\lexer.hpp">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsHeaderUnit</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\NekoLang\repl.hpp">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsHeaderUnit</CompileAs>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -113,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
