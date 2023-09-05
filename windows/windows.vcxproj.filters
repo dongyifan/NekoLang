@@ -24,5 +24,11 @@
     <ClCompile Include="..\NekoLang\lexer.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\NekoLang\ast.hpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NekoLang\parser.hpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

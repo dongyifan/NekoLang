@@ -9,6 +9,8 @@
 import std;
 import "lexer.hpp";
 import "repl.hpp";
+import "ast.hpp";
+import "parser.hpp";
 #else
 #include <iostream>
 #include <type_traits>
