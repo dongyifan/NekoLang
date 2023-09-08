@@ -50,6 +50,11 @@ public:
 			return "";
 		}
 	}
+
+	void add_statement(std::unique_ptr<Statement> statement)
+	{
+		statement_.emplace_back(std::move(statement));
+	}
 private:
 	std::vector<std::unique_ptr<Statement>> statement_;
 };
@@ -58,6 +63,10 @@ private:
 class Identifier : public Expression
 {
 public:
+	Identifier(Token token, std::string_view value) : token_{ std::move(token) }, value_{value}
+	{
+
+	}
 	~Identifier() override = default;
 	std::string token_literal() override
 	{
@@ -65,21 +74,27 @@ public:
 	}
 private:
 	Token token_;
-	std::string value_;
+	std::string_view value_;
 };
 
 class LetStatement : public Statement
 {
 public:
+	LetStatement(Token token) : token_{std::move(token)} 
+	{}
 	~LetStatement() override = default;
 	std::string token_literal() override
 	{
 		return std::string{ token_.literal };
 	}
+	void set_name(std::unique_ptr<Identifier> name)
+	{
+		name_ = std::move(name);
+	}
 
 private:
 	Token token_;
-	Identifier* name_;
+	std::unique_ptr<Identifier> name_;
 
 };
 

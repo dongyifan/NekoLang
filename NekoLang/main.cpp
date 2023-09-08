@@ -79,8 +79,17 @@ if (5 < 10) {
     Token token;
     do {
         token = lexer.next_token();
-        std::cout << token << "\n";
+        std::string s = std::string(token.type) + ": " + std::string(token.literal);
+        std::cout << s << "\n";
     } while (token.type != EOF_);
+}
+
+void test_let_statement()
+{
+    static constexpr const char* code =
+        "let x 5;\n";
+    Parser parser{ code };
+    auto program = parser.parse_program();
 }
 
 int main(int argc, const char * argv[]) {
@@ -101,8 +110,9 @@ int main(int argc, const char * argv[]) {
 
     //Test_Next_Token();
     //Test_Lexer_With_Ident_And_Keyword();
+    test_let_statement();
 
-    repl_start(std::cin, std::cout);
+    //repl_start(std::cin, std::cout);
 
     std::cout << "Hello World!";
     

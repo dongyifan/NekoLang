@@ -49,7 +49,7 @@ inline bool is_letter(char ch)
 
 inline bool is_digit(char ch)
 {
-    return '0' <= ch && ch <= '0';
+    return '0' <= ch && ch <= '9';
 }
 
 using TokenType = std::string_view;
